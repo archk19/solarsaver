@@ -3,7 +3,7 @@ import Logo from "./logo";
 import Propositions from "./propositions";
 import Testimonials from "./testimonials";
 import "./App.css";
-//com
+
 class App extends Component {
   render() {
     return (
