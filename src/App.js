@@ -29,6 +29,10 @@ class App extends Component {
           <button onClick={this.close} className="close">
             X
           </button>
+          <button className="next">
+            <div className="progress" style={{ width: "100%" }} />
+            <span>Next</span>
+          </button>
         </div>
       </div>
     );

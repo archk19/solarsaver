@@ -100,6 +100,9 @@ nav,
 section {
   display: block;
 }
+:root {
+  --next-margin: 10px;
+}
 body {
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
@@ -243,8 +246,11 @@ table {
 }
 
 .overlay {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 100%;
+  /* top: 100%; */
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -271,4 +277,42 @@ button.save img {
   position: relative;
   height: 24px;
   top: -3px;
+}
+
+button.close {
+  align-self: flex-start;
+  padding: 10px;
+}
+
+button.next {
+  position: relative;
+  width: calc(100% - var(--next-margin) * 2);
+  background-color: #f5a623;
+  padding: 10px;
+  margin: var(--next-margin);
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+button.next::after {
+  content: "a";
+  opacity: 0;
+}
+
+button.next .progress {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  background-color: #e6940d;
+  border-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+button.next span {
+  z-index: 1;
+  position: absolute;
 }
