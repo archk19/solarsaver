@@ -34,10 +34,7 @@ class App extends Component {
               <label htmlFor="">Step 1</label>
               <p>What's your monthly electricity bill?</p>
               <div className="wrapper">
-                <span>
-                  Rs.
-                  {"  "}
-                </span>
+                <span>Rs.</span>
                 <input type="number" />
               </div>
             </div>
