@@ -3,18 +3,15 @@ import React, { Component } from "react";
 const PROPOSITIONS = [
   {
     image: "savings",
-    text: "Save your entire electricity bill",
-    color: "#4285F4"
+    text: "Save your entire electricity bill"
   },
   {
     image: "downpayment",
-    text: "Not a single rupee from your pocket",
-    color: "#DD4B39"
+    text: "Not a single rupee from your pocket"
   },
   {
     image: "gogreen",
-    text: "Help save the planet by going green",
-    color: "#FBBC05"
+    text: "Help save the planet by going green"
   }
 ];
 
@@ -22,12 +19,8 @@ class Propositions extends Component {
   render() {
     return (
       <section className="propositions">
-        {PROPOSITIONS.map(({ text, image, color }) => (
-          <div
-            className="proposition"
-            style={{ backgroundColor: color }}
-            key={text}
-          >
+        {PROPOSITIONS.map(({ text, image }) => (
+          <div className="proposition" key={text}>
             <img src={require(`./assets/${image}.svg`)} alt={image} />
             <span>{text}</span>
           </div>

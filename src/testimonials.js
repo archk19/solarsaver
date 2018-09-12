@@ -39,10 +39,10 @@ class Testimonials extends Component {
             <div className={`testimonial testimonial-${index + 1}`} key={tag}>
               <img src={require(`./assets/${image}.jpg`)} alt={image} />
               <div className="testimonial-text">
-                <span>{tag}</span>
-                <span>{name}</span>
-                <span>{quote}</span>
-                <span>{tag2}</span>
+                <p>{tag}</p>
+                <p>{name}</p>
+                <p>{quote}</p>
+                <p>{tag2}</p>
               </div>
             </div>
           )
