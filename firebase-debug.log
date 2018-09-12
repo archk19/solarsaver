@@ -1,0 +1,23 @@
+[debug] [2018-09-12T10:40:33.875Z] ----------------------------------------------------------------------
+[debug] [2018-09-12T10:40:33.877Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-09-12T10:40:33.877Z] CLI Version:   4.2.1
+[debug] [2018-09-12T10:40:33.877Z] Platform:      darwin
+[debug] [2018-09-12T10:40:33.877Z] Node Version:  v8.11.4
+[debug] [2018-09-12T10:40:33.878Z] Time:          Wed Sep 12 2018 16:10:33 GMT+0530 (IST)
+[debug] [2018-09-12T10:40:33.878Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-12T10:40:33.893Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-12T10:40:33.893Z] > authorizing via signed-in user
+[debug] [2018-09-12T10:40:33.894Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-12T10:40:33.895Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-09-12T10:40:34.352Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-12T10:40:34.360Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/solar-saver  
+ 
+[debug] [2018-09-12T10:40:35.604Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'solar-saver'...
+[info] 
+[info] i  deploying hosting
+[debug] [2018-09-12T10:40:35.609Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/solar-saver/versions  
+

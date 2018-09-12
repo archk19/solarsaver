@@ -29,10 +29,20 @@ class App extends Component {
           <button onClick={this.close} className="close">
             X
           </button>
-          <button className="next">
-            <div className="progress" style={{ width: "100%" }} />
-            <span>Next</span>
-          </button>
+          <div className="calculator">
+            <div className="electricity">
+              <label htmlFor="">Step 1</label>
+              <p>What's your monthly electricity bill?</p>
+              <div className="wrapper">
+                <span>Rs. </span>
+                <input type="text" />
+              </div>
+            </div>
+            <button className="next" disabled>
+              <div className="progress" style={{ width: "100%" }} />
+              <span>Next</span>
+            </button>
+          </div>
         </div>
       </div>
     );
