@@ -7,11 +7,11 @@ const PROPOSITIONS = [
   },
   {
     image: "downpayment",
-    text: "Not a single rupee from your pocket"
+    text: "No need to spend a single rupee"
   },
   {
     image: "gogreen",
-    text: "Help save the planet by going green"
+    text: "Go green- the planet will thank you"
   }
 ];
 

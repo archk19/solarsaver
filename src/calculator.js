@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+// import OpenCalc from "./opencalc";
 
 class Calculator extends Component {
   state = {
     fields: {
-      electricity: " "
+      screen: 1,
+      electricity: "",
+      roof: "",
+      state: ""
     }
   };
 
@@ -23,19 +27,40 @@ class Calculator extends Component {
     overlay.classList.remove("expanded");
   };
 
+  one = () => {
+    const fields = this.state.fields;
+    fields[window.screen] = 1;
+    this.setState({ fields });
+  };
+
+  two = () => {
+    const fields = this.state.fields;
+    fields[window.screen] = 2;
+    this.setState({ fields });
+  };
+
+  three = () => {
+    const fields = this.state.fields;
+    fields[window.screen] = 3;
+    this.setState({ fields });
+  };
+
   render() {
     return (
       <div>
+        {/* <OpenCalc /> */}
         <button onClick={this.saveMyMoney} className="save">
           <div />
           <span>Save My Money!</span>
           <img src={require(`./assets/up-arrow.svg`)} alt="" />
         </button>
         <div className="overlay" ref={overlay => (this.overlay = overlay)}>
+          {/* <CloseCalc /> */}
           <button onClick={this.close} className="close">
             X
           </button>
           <div className="calculator">
+            {/* {if this.state.fields.screen==1} */}
             <div className="electricity">
               <label htmlFor="">Step 1</label>
               <p>What's your monthly electricity bill?</p>
@@ -50,7 +75,11 @@ class Calculator extends Component {
                 />
               </div>
             </div>
-            <button className="next" disabled={!this.state.fields.electricity}>
+            <button
+              className="next"
+              disabled={!this.state.fields.electricity}
+              onClick={this.two}
+            >
               <div className="progress" style={{ width: "100%" }} />
               <span>Next</span>
             </button>

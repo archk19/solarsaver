@@ -9,9 +9,8 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        {/* <Propositions />
-        <Testimonials /> */}
         <Calculator />
+        <Testimonials />
       </div>
     );
   }
