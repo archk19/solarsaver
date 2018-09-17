@@ -5,12 +5,16 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <img src={require(`./assets/landingbg.jpg`)} className="landing" />
+        <img
+          src={require(`./assets/landingbg.jpg`)}
+          className="landing"
+          alt="Landing Background"
+        />
         <div className="content">
           <Propositions />
         </div>
         <div className="logo">
-          <img src={require(`./assets/logo.png`)} />
+          <img src={require(`./assets/logo.png`)} alt="Logo" />
           <span>Solar Saver</span>
         </div>
       </div>

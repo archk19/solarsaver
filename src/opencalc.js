@@ -1,21 +1,11 @@
 import React, { Component } from "react";
 
-// window.closeIt = () => {
-//   const overlay = this.overlay;
-//   overlay.classList.remove("expanded");
-// };
-
-saveMyMoney = () => {
-  const overlay = this.overlay;
-  overlay.classList.add("expanded");
-};
-
 class OpenCalc extends Component {
   render() {
     return (
-      <button onClick={this.saveMyMoney} className="save">
+      <button onClick={this.props.click} className="save">
         <div />
-        <span>Save My Money!</span>
+        <span>Save my Money in 3 Steps!</span>
         <img src={require(`./assets/up-arrow.svg`)} alt="" />
       </button>
     );

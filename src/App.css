@@ -115,6 +115,11 @@ input {
   color: rgba(0, 0, 0, 0.86);
   outline: none;
 }
+
+span.empty {
+  color: #757575;
+}
+
 :root {
   --calc-margin: 20px;
 }
@@ -304,19 +309,23 @@ table {
 
 .overlay {
   display: flex;
+  /* opacity: 0; */
+  opacity: 1;
   flex-direction: column;
   position: absolute;
-  top: 100%;
-  /* top: 0; */
-  bottom: 0;
+  /* top: 100%; */
+  top: 0;
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.95);
-  transition: top 0.5s ease-in;
+  transition: top 0.5s ease-in, opacity 0.5s ease-in;
+  height: 400%;
 }
 
 .overlay.expanded {
   top: 0;
+  opacity: 1;
+  transition: top 0.5s ease-in;
 }
 
 button.save {
@@ -396,7 +405,7 @@ button.next span {
   font-size: 24px;
 }
 
-.electricity .wrapper {
+.inputarea .wrapper {
   font-size: 16px;
   border-bottom: 2px solid #979797;
   padding: 5px 0;
@@ -404,6 +413,36 @@ button.next span {
   display: flex;
 }
 
-.electricity .wrapper span {
+.inputarea .wrapper.collapsed {
+  margin-top: 0;
+}
+
+.inputarea .wrapper span {
   margin-right: 5px;
+}
+
+.toggle {
+  display: flex;
+  border: 1px solid #e6940d;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.toggle .active {
+  background-color: #e6940d;
+  color: #fff;
+}
+
+.sqf,
+.sqm {
+  width: 70px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  white-space: nowrap;
+  text-align: center;
+  color: #e6940d;
+}
+
+.sqf {
+  border-right: 1px solid #e6940d;
 }
