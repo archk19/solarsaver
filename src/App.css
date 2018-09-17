@@ -126,6 +126,7 @@ span.empty {
 body {
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
+  height: 100vh;
 }
 ol,
 ul {
@@ -309,17 +310,16 @@ table {
 
 .overlay {
   display: flex;
-  /* opacity: 0; */
-  opacity: 1;
+  opacity: 0;
   flex-direction: column;
   position: absolute;
-  /* top: 100%; */
-  top: 0;
+  top: 100%;
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.95);
   transition: top 0.5s ease-in, opacity 0.5s ease-in;
-  height: 400%;
+  height: 100vh;
+  overflow: auto;
 }
 
 .overlay.expanded {
@@ -338,6 +338,8 @@ button.save {
   font-size: 18px;
   justify-content: space-around;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  bottom: 0;
 }
 
 button.save img {
@@ -388,6 +390,8 @@ button.next .progress {
 button.next span {
   z-index: 1;
   position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .calculator {
@@ -445,4 +449,8 @@ button.next span {
 
 .sqf {
   border-right: 1px solid #e6940d;
+}
+
+body.expanded {
+  overflow-y: hidden;
 }

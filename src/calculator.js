@@ -5,10 +5,10 @@ import Roof from "./roof";
 import Place from "./place";
 
 const SCREENS = {
-  ELECTRICITY: 1,
-  ROOF: 2,
-  PLACE: 3,
-  NONE: 0
+  ELECTRICITY: "electricity",
+  ROOF: "roof",
+  PLACE: "place",
+  NONE: "none"
 };
 class Calculator extends Component {
   state = {
@@ -18,7 +18,13 @@ class Calculator extends Component {
       roof: "",
       place: "",
       roofUnit: "sqf"
-    }
+    },
+    touched: {
+      electricity: true,
+      roof: false,
+      place: false
+    },
+    showResults: false
   };
 
   onInputChange = evt => {
@@ -29,17 +35,24 @@ class Calculator extends Component {
 
   saveMyMoney = () => {
     const overlay = this.overlay;
+    window.scrollTo(0, 0);
     overlay.classList.add("expanded");
+    document.body.classList.add("expanded");
   };
 
   close = () => {
     const overlay = this.overlay;
     overlay.classList.remove("expanded");
+    document.body.classList.remove("expanded");
   };
 
   setScreen = screen => () => {
     this.setState({
-      screen
+      screen,
+      touched: {
+        ...this.state.touched,
+        [screen]: true
+      }
     });
   };
 
@@ -57,13 +70,13 @@ class Calculator extends Component {
   };
 
   goToNext = () => {
-    const {
-      fields: { electricity, roof, place },
-      screen
-    } = this.state;
+    const { screen } = this.state;
     if (screen === SCREENS.ELECTRICITY) this.setScreen(SCREENS.ROOF)();
     if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
-    //if (screen === SCREENS.PLACE) disabled = place === "";
+    if (screen === SCREENS.PLACE) {
+      this.setScreen(SCREENS.NONE)();
+      this.setState({ showResults: true });
+    }
   };
 
   isCollapsed = forScreen => {
@@ -75,25 +88,38 @@ class Calculator extends Component {
 
   render() {
     const {
-      fields: { electricity, roof, place, roofUnit }
-      // screen
+      fields: { electricity, roof, place, roofUnit },
+      touched,
+      screen,
+      showResults
     } = this.state;
+
+    let progress = 33;
+    if (screen === SCREENS.ROOF) {
+      progress = 67;
+    }
+    if (screen === SCREENS.PLACE || screen === SCREENS.NONE) {
+      progress = 100;
+    }
 
     const INPUTS = [
       {
         Component: Electricity,
         value: electricity,
-        key: SCREENS.ELECTRICITY
+        key: SCREENS.ELECTRICITY,
+        touched: touched[SCREENS.ELECTRICITY]
       },
       {
         Component: Roof,
         value: roof,
-        key: SCREENS.ROOF
+        key: SCREENS.ROOF,
+        touched: touched[SCREENS.ROOF]
       },
       {
         Component: Place,
         value: place,
-        key: SCREENS.PLACE
+        key: SCREENS.PLACE,
+        touched: touched[SCREENS.PLACE]
       }
     ];
 
@@ -107,28 +133,34 @@ class Calculator extends Component {
           </button>
 
           <div className="calculator">
-            {INPUTS.map(({ Component, value, key }) => (
-              <Component
-                value={value}
-                onInputChange={this.onInputChange}
-                key={key}
-                roofUnit={roofUnit}
-                isCollapsed={this.isCollapsed(key)}
-                onClick={this.setScreen(key)}
-              />
-            ))}
-            <button
-              className="next"
-              disabled={this.isNextDisabled()}
-              onClick={this.goToNext}
-            >
-              <div className="progress" style={{ width: "100%" }} />
-              {this.state.screen === 3 ? (
-                <span> Save my Money!</span>
-              ) : (
-                <span>Next</span>
-              )}
-            </button>
+            {INPUTS.map(
+              ({ Component, value, key, touched }) =>
+                touched ? (
+                  <Component
+                    value={value}
+                    onInputChange={this.onInputChange}
+                    key={key}
+                    roofUnit={roofUnit}
+                    isCollapsed={this.isCollapsed(key)}
+                    onClick={this.setScreen(key)}
+                  />
+                ) : null
+            )}
+            {showResults ? null : (
+              <button
+                className="next"
+                disabled={this.isNextDisabled()}
+                onClick={this.goToNext}
+              >
+                <div className="progress" style={{ width: `${progress}%` }} />
+                {progress === 100 ? (
+                  <span> Save my Money!</span>
+                ) : (
+                  <span>Next</span>
+                )}
+              </button>
+            )}
+            {showResults ? <div className="result">RESULT</div> : null}
           </div>
         </div>
       </div>

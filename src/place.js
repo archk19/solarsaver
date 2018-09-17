@@ -17,6 +17,17 @@ class Place extends Component {
     });
   };
 
+  onBlur = () => {
+    if (this.props.value === "" && this.state.prevValue !== " ") {
+      this.props.onInputChange({
+        target: {
+          name: "place",
+          value: this.state.prevValue
+        }
+      });
+    }
+  };
+
   render() {
     const placesList = stateValues.map(item => item.place);
     const { value, onInputChange, onClick, isCollapsed } = this.props;
@@ -33,11 +44,12 @@ class Place extends Component {
               list="places"
               placeholder="e.g Karnataka"
               onFocus={this.onFocus}
+              onBlur={this.onBlur}
             />
 
             <datalist id="places">
               {placesList.map(item => (
-                <option value={item} />
+                <option value={item} key={item} />
               ))}
             </datalist>
           </div>
