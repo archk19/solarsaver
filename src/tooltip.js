@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 
 class Tooltip extends Component {
+  state = {
+    isExpanded: false
+  };
+
+  toggle = () => {
+    this.setState({ isExpanded: !this.state.isExpanded });
+  };
   render() {
+    const { isExpanded } = this.state;
+    const { question, tooltip } = this.props;
     return (
-      <div className="tooltip">
+      <div className="question">
+        {question}
         <img
-          src={require("./assets/information.svg")}
-          alt="information tool-tip"
+          alt="tool-tip image"
+          src={
+            isExpanded
+              ? require("./assets/close.svg")
+              : require("./assets/information.svg")
+          }
+          onClick={this.toggle}
         />
-        <div className="tooltip-text expanded">{this.props.tooltip}</div>
+        <div className={`tooltip${isExpanded ? " expanded" : ""}`}>
+          {tooltip}
+        </div>
       </div>
     );
   }

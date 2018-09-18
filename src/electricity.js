@@ -16,12 +16,7 @@ class Electricity extends Component {
         <div>
           <label htmlFor="">Step 1</label>
           {isCollapsed ? null : (
-            <div>
-              <div className="question">
-                {question}
-                <Tooltip tooltip={tooltip} />
-              </div>
-            </div>
+            <Tooltip question={question} tooltip={tooltip} />
           )}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             <span>Rs.</span>
