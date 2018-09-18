@@ -4,6 +4,7 @@ import Electricity from "./electricity";
 import Roof from "./roof";
 import Place from "./place";
 import Results from "./results";
+import Tooltip from "./tooltip";
 
 const SCREENS = {
   ELECTRICITY: "electricity",
@@ -108,19 +109,28 @@ class Calculator extends Component {
         Component: Electricity,
         value: electricity,
         key: SCREENS.ELECTRICITY,
-        touched: touched[SCREENS.ELECTRICITY]
+        touched: touched[SCREENS.ELECTRICITY],
+        question: "What's your monthly electricity bill?",
+        tooltip:
+          "Based on your monthly usage we'll recommend the most optimised solar installation size for you! If you don't know your bill, take a guess :)"
       },
       {
         Component: Roof,
         value: roof,
         key: SCREENS.ROOF,
-        touched: touched[SCREENS.ROOF]
+        touched: touched[SCREENS.ROOF],
+        question: "What's your roof-top area?",
+        tooltip:
+          "We'll assume 80% usable area to account for shaded areas. This will help us know your maximum capacity."
       },
       {
         Component: Place,
         value: place,
         key: SCREENS.PLACE,
-        touched: touched[SCREENS.PLACE]
+        touched: touched[SCREENS.PLACE],
+        question: "Which State is your house in?",
+        tooltip:
+          "Your state will help us with the rate you pay for electricity from the grid. And also the average solar radiation in your State."
       }
     ];
 
@@ -135,7 +145,7 @@ class Calculator extends Component {
 
           <div className="calculator">
             {INPUTS.map(
-              ({ Component, value, key, touched }) =>
+              ({ Component, value, key, touched, question, tooltip }) =>
                 touched ? (
                   <Component
                     value={value}
@@ -144,6 +154,8 @@ class Calculator extends Component {
                     roofUnit={roofUnit}
                     isCollapsed={this.isCollapsed(key)}
                     onClick={this.setScreen(key)}
+                    question={question}
+                    tooltip={tooltip}
                   />
                 ) : null
             )}

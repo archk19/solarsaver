@@ -30,12 +30,19 @@ class Place extends Component {
 
   render() {
     const placesList = stateValues.map(item => item.place);
-    const { value, onInputChange, onClick, isCollapsed } = this.props;
+    const {
+      value,
+      onInputChange,
+      onClick,
+      isCollapsed,
+      question,
+      tooltip
+    } = this.props;
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
           <label htmlFor="">Step 3</label>
-          {isCollapsed ? null : <p>Which state is your house in?</p>}
+          {isCollapsed ? null : <p>{question}</p>}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             <input
               name="place"

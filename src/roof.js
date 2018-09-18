@@ -5,13 +5,21 @@ class Roof extends Component {
     this.props.onInputChange({ target: { name: "roofUnit", value } });
   };
   render() {
-    const { value, onInputChange, onClick, roofUnit, isCollapsed } = this.props;
+    const {
+      value,
+      onInputChange,
+      onClick,
+      roofUnit,
+      isCollapsed,
+      question,
+      tooltip
+    } = this.props;
     const isSqm = roofUnit === "sqm";
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
           <label htmlFor="">Step 2</label>
-          {isCollapsed ? null : <p>What's your roof area?</p>}
+          {isCollapsed ? null : <p>{question}</p>}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             {isCollapsed ? (
               <span className={`value${value ? "" : " empty"}`}>
