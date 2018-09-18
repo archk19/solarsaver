@@ -162,20 +162,20 @@ class Results extends Component {
 
     return (
       <div className="result">
-        <div>Result</div>
+        {/* <div>Result</div>
         <div>{electricity}</div>
         <div>{roof}</div>
         <div>{roofUnit}</div>
-        <div>{place}</div>
+        <div>{place}</div> */}
 
         <div>
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
 
-        <div style={{ whiteSpace: "pre" }}>{annualSavingsArray.join("\n")}</div>
+        {/* <div style={{ whiteSpace: "pre" }}>{annualSavingsArray.join("\n")}</div>
         <div style={{ whiteSpace: "pre" }}>
           {cumulativeSavingsArray.join("\n")}
-        </div>
+        </div> */}
       </div>
     );
   }

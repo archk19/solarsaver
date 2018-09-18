@@ -5,7 +5,7 @@ class OpenCalc extends Component {
     return (
       <button onClick={this.props.click} className="save">
         <div />
-        <span>Save my Money in 3 Steps!</span>
+        <span>Save My Money!</span>
         <img src={require(`./assets/up-arrow.svg`)} alt="" />
       </button>
     );

@@ -41,7 +41,7 @@ class Place extends Component {
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
-          <label htmlFor="">Step 3</label>
+          <label htmlFor="">Step 3 of 3</label>
           {isCollapsed ? null : <p>{question}</p>}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             <input

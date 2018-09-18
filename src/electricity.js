@@ -14,7 +14,7 @@ class Electricity extends Component {
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
-          <label htmlFor="">Step 1</label>
+          <label htmlFor="">Step 1 of 3</label>
           {isCollapsed ? null : (
             <Tooltip question={question} tooltip={tooltip} />
           )}

@@ -18,7 +18,7 @@ class Roof extends Component {
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
-          <label htmlFor="">Step 2</label>
+          <label htmlFor="">Step 2 of 3</label>
           {isCollapsed ? null : <p>{question}</p>}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             {isCollapsed ? (
