@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import stateValues from "./stateValues";
+import values from "./values";
 
 class Place extends Component {
   state = {
@@ -29,7 +29,7 @@ class Place extends Component {
   };
 
   render() {
-    const placesList = stateValues.map(item => item.place);
+    const placesList = values.map(item => item.place);
     const {
       value,
       onInputChange,

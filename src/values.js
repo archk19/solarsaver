@@ -1,4 +1,4 @@
-export default [
+const values = [
   { place: "Andaman and Nicobar Islands", cpu: 6.5 },
   { place: "Andhra Pradesh", cpu: 9 },
   { place: "Arunachal Pradesh", cpu: 5.5 },
@@ -35,3 +35,22 @@ export default [
   { place: "Uttarakhand", cpu: 5 },
   { place: "West Bengal", cpu: 10 }
 ];
+export default values;
+
+export const years = 25;
+export const consumptionGrowthRate = 5;
+export const govtGrowthRate = 10;
+export const sqmToSqf = 9.2903;
+export const ppaFactor = 0.9;
+export const pricePerKwp = 100000;
+export const usableRoof = 0.8;
+export const roofToKwp = 0.01;
+export const solarHrsPerYear = 5 * 350;
+
+export const cpuForState = place => {
+  const value = values.find(item => item.place === place);
+  if (value) {
+    return value.cpu;
+  }
+  return 0;
+};
