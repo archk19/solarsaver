@@ -3,6 +3,7 @@ import OpenCalc from "./opencalc";
 import Electricity from "./electricity";
 import Roof from "./roof";
 import Place from "./place";
+import Results from "./results";
 
 const SCREENS = {
   ELECTRICITY: "electricity",
@@ -160,7 +161,14 @@ class Calculator extends Component {
                 )}
               </button>
             )}
-            {showResults ? <div className="result">RESULT</div> : null}
+            {showResults ? (
+              <Results
+                electricity={electricity}
+                roof={roof}
+                place={place}
+                roofUnit={roofUnit}
+              />
+            ) : null}
           </div>
         </div>
       </div>
