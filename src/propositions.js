@@ -3,7 +3,7 @@ import React, { Component } from "react";
 const PROPOSITIONS = [
   {
     image: "downpayment",
-    text: "Zero down-payment. No hidden fees."
+    text: "Pay zero downpayment"
   },
   {
     image: "savings",

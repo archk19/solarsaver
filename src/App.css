@@ -212,13 +212,21 @@ table {
   padding-bottom: 10px;
   font-weight: 700;
   font-size: 18px;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.proposition span {
+  width: 75%;
 }
 
 .proposition img {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  margin-right: 20px;
+  margin-right: 5px;
+  margin-left: 25px;
 }
 
 .testimonials {
@@ -268,44 +276,65 @@ table {
   color: #fff;
   position: absolute;
   top: 10px;
-  right: 10px;
-  padding: 10px;
+  right: 20px;
+  padding: 10px 0px;
   margin: -2px;
+  word-wrap: break-word;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .hashtag-1 {
-  font-size: 38px;
+  font-size: 35px;
   font-weight: bolder;
 }
 .hashtag-3 {
-  font-size: 38px;
+  font-size: 35px;
   font-weight: bolder;
 }
 .hashtag-2 {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bolder;
+  width: 55%;
+  text-align: center;
+  top: 0px;
+  right: -3px;
 }
 .testimonial-text {
   background-color: #fff;
   padding: 15px;
   margin: -2px;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .name {
   font-size: 20px;
   font-weight: bolder;
+  padding: 5px 0px;
+}
+
+.house {
+  font-weight: bolder;
+  font-size: 12px;
 }
 
 .quote {
   font-style: italic;
+  font-size: 15px;
+
   /* text-align: justify center; */
 }
 
 .tag {
   font-weight: bolder;
   color: #226ad5;
+  padding: 5px 0px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.empty {
+  height: 55px;
 }
 
 .overlay {
@@ -316,6 +345,7 @@ table {
   top: 100%;
   left: 0;
   right: 0;
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.95);
   transition: top 0.5s ease-in, opacity 0.5s ease-in;
   height: 100vh;
@@ -326,16 +356,17 @@ table {
   top: 0;
   opacity: 1;
   transition: top 0.5s ease-in;
+  height: 120%;
 }
 
 button.save {
   display: flex;
   align-items: center;
   padding: 20px;
-  color: #226ad5;
+  color: white;
   background: #f5a623;
   width: 100%;
-  font-size: 18px;
+  font-size: 24px;
   justify-content: space-around;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: fixed;
@@ -344,14 +375,15 @@ button.save {
 
 button.save img {
   position: relative;
-  height: 24px;
-  top: -3px;
+  height: 36px;
+  top: -1px;
+  right: -5px;
 }
 
 button.close {
   align-self: flex-start;
-  padding: 10px;
-  font-size: 16px;
+  margin: 25px 0px 5px 5px;
+  width: 30px;
 }
 
 button.next {
@@ -475,4 +507,8 @@ button.next span {
 
 body.expanded {
   overflow-y: hidden;
+}
+
+input::placeholder {
+  color: #c7c7cd;
 }

@@ -28,7 +28,7 @@ class Roof extends Component {
             ) : (
               <input
                 name="roof"
-                placeholder="1,000"
+                placeholder="e.g 1,000"
                 type="number"
                 value={value}
                 onChange={onInputChange}

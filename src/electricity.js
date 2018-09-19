@@ -27,7 +27,7 @@ class Electricity extends Component {
             <span>Rs.</span>
             <input
               name="electricity"
-              placeholder="1,200"
+              placeholder="e.g 1,200"
               type="number"
               value={value}
               onChange={onInputChange}

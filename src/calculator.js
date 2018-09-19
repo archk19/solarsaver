@@ -140,7 +140,7 @@ class Calculator extends Component {
 
         <div className="overlay" ref={overlay => (this.overlay = overlay)}>
           <button onClick={this.close} className="close">
-            X
+            <img alt="close calculator" src={require("./assets/close.svg")} />
           </button>
 
           <div className="calculator">

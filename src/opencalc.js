@@ -4,9 +4,12 @@ class OpenCalc extends Component {
   render() {
     return (
       <button onClick={this.props.click} className="save">
-        <div />
+        <img src={require(`./assets/calculator.svg`)} alt="" />
+
         <span>Calculate my Savings!</span>
-        <img src={require(`./assets/up-arrow.svg`)} alt="" />
+        <div />
+
+        {/* <img src={require(`./assets/up-arrow.svg`)} alt="" /> */}
       </button>
     );
   }

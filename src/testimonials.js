@@ -5,26 +5,29 @@ const TESTIMONIALS = [
     background: "bg1",
     image: "img1",
     hashtag: "#savings",
-    name: "Mr. Gupta (5000 sq. ft. house in Jaipur):",
+    name: "Mr. Gupta",
+    house: "(5000 sq. ft. house, Jaipur)",
     quote:
-      "I cut my monthly electricity bill from ₹5,000 to  ₹1,000. It’s like magic!",
-    tag: "Savings in 5 years: ₹ 2,00,000"
+      '"I cut my monthly electricity bill from ₹6,000 to  ₹4,000. It’s like magic!"',
+    tag: "Savings in 6 years: ₹ 2,00,000"
   },
   {
     background: "bg3",
     image: "img3",
-    hashtag: "#zerodownpayment",
-    name: "Mr. & Mrs. Manjunath (2000 sq. ft. house in Bengaluru):",
+    hashtag: "#zero downpayment",
+    name: "The Manjunaths",
+    house: "(2000 sq. ft. house, Bengaluru)",
     quote:
-      "Without spending a single rupee, we started saving money from the first month itself!",
+      '"Without spending a single rupee, we started saving money from the first month itself!"',
     tag: "Down-payment: Zero"
   },
   {
     background: "bg2",
     image: "img2",
     hashtag: "#gogreen",
-    name: "Mrs. Renuka (1000 sq. ft. house in Noida):",
-    quote: "Switching to solar is like planting 4 trees every month!",
+    name: "Mrs. Renuka",
+    house: "(1000 sq. ft. house, Noida)",
+    quote: '"Switching to solar is like planting 4 trees every month!"',
     tag: "Trees planted in 6 years: 300"
   }
 ];
@@ -34,7 +37,7 @@ class Testimonials extends Component {
     return (
       <section className="testimonials">
         {TESTIMONIALS.map(
-          ({ hashtag, background, image, name, quote, tag }, index) => (
+          ({ hashtag, background, image, name, house, quote, tag }, index) => (
             <div
               className={`testimonial testimonial-${index + 1}`}
               key={hashtag}
@@ -46,13 +49,17 @@ class Testimonials extends Component {
                 alt={image}
               />
               <div className="testimonial-text">
-                <p className="name">{name}</p>
+                <p className="name">
+                  {name + " "}
+                  <span className="house">{house}</span>
+                </p>
                 <p className="quote">{quote}</p>
                 <p className="tag">{tag}</p>
               </div>
             </div>
           )
         )}
+        <div className="empty" />
       </section>
     );
   }
