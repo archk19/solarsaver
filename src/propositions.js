@@ -2,13 +2,14 @@ import React, { Component } from "react";
 
 const PROPOSITIONS = [
   {
-    image: "savings",
-    text: "Save your entire electricity bill"
+    image: "downpayment",
+    text: "Zero down-payment. No hidden fees."
   },
   {
-    image: "downpayment",
-    text: "No need to spend a single rupee"
+    image: "savings",
+    text: "Save upto 40% of your electricity bill"
   },
+
   {
     image: "gogreen",
     text: "Go green- the planet will thank you"

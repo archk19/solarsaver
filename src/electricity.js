@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import Tooltip from "./tooltip";
 
 class Electricity extends Component {
+  _handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.props.goToNext();
+    }
+  };
   render() {
     const {
       value,
@@ -27,6 +32,7 @@ class Electricity extends Component {
               value={value}
               onChange={onInputChange}
               maxLength={5}
+              onKeyPress={this._handleKeyPress}
             />
           </div>
         </div>

@@ -115,12 +115,16 @@ class Results extends Component {
       series: [
         {
           name: "Annual Savings",
-          // marker: "diamond",
+          marker: {
+            radius: 1
+          },
           data: annualSavingsArray
         },
         {
           name: "Total Savings till date",
-          // marker: "circle",
+          marker: {
+            radius: 1
+          },
           data: cumulativeSavingsArray
         }
       ],

@@ -156,6 +156,7 @@ class Calculator extends Component {
                     onClick={this.setScreen(key)}
                     question={question}
                     tooltip={tooltip}
+                    goToNext={this.goToNext}
                   />
                 ) : null
             )}
