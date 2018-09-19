@@ -7,7 +7,7 @@ class OpenCalc extends Component {
         <img src={require(`./assets/calculator.svg`)} alt="" />
 
         <span>Calculate my Savings!</span>
-        <div />
+        {/* <div /> */}
 
         {/* <img src={require(`./assets/up-arrow.svg`)} alt="" /> */}
       </button>

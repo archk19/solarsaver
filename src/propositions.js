@@ -3,16 +3,16 @@ import React, { Component } from "react";
 const PROPOSITIONS = [
   {
     image: "downpayment",
-    text: "Pay zero downpayment"
+    text: "Pay zero down-payment"
   },
   {
     image: "savings",
-    text: "Save upto 40% of your electricity bill"
+    text: "Save 40% of your electricity bill"
   },
 
   {
     image: "gogreen",
-    text: "Go green- the planet will thank you"
+    text: "Go green & save the planet"
   }
 ];
 
