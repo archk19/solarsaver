@@ -193,7 +193,7 @@ table {
   position: absolute;
   display: flex;
   justify-content: center;
-  top: 10px;
+  top: 15px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -222,7 +222,7 @@ table {
   height: 38px;
   object-fit: contain;
   margin-right: 20px;
-  margin-left: 0px;
+  margin-left: -10px;
 }
 
 .testimonials {
@@ -293,7 +293,7 @@ table {
   width: 55%;
   text-align: center;
   top: 0px;
-  right: -3px;
+  right: 5px;
 }
 .testimonial-text {
   background-color: #fff;
@@ -378,6 +378,7 @@ button.save img {
 
 button.save span {
   text-align: left;
+  margin-left: -40px;
 }
 
 button.close {
