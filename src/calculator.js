@@ -4,6 +4,7 @@ import Electricity from "./electricity";
 import Roof from "./roof";
 import Place from "./place";
 import Results from "./results";
+import values from "./values";
 
 const SCREENS = {
   ELECTRICITY: "electricity",
@@ -39,6 +40,10 @@ class Calculator extends Component {
     window.scrollTo(0, 0);
     overlay.classList.add("expanded");
     document.body.classList.add("expanded");
+    setTimeout(() => {
+      this.focusInput(SCREENS.ELECTRICITY);
+    }, 400);
+    window.history.pushState({}, "", "/calculator");
   };
 
   close = () => {
@@ -48,13 +53,18 @@ class Calculator extends Component {
   };
 
   setScreen = screen => () => {
-    this.setState({
-      screen,
-      touched: {
-        ...this.state.touched,
-        [screen]: true
+    this.setState(
+      {
+        screen,
+        touched: {
+          ...this.state.touched,
+          [screen]: true
+        }
+      },
+      () => {
+        this.focusInput(screen);
       }
-    });
+    );
   };
 
   isNextDisabled = () => {
@@ -65,8 +75,10 @@ class Calculator extends Component {
     let disabled = false;
     if (screen === SCREENS.ELECTRICITY) disabled = electricity === "";
     if (screen === SCREENS.ROOF) disabled = roof === "";
-    if (screen === SCREENS.PLACE) disabled = place === "";
-
+    const isValidPlace = values.find(
+      ({ place: original }) => original === place
+    );
+    if (screen === SCREENS.PLACE) disabled = !isValidPlace;
     return disabled;
   };
 
@@ -87,6 +99,15 @@ class Calculator extends Component {
     return collapsed;
   };
 
+  focusInput(inputName) {
+    const input = document.querySelector(`input[name='${inputName}']`);
+    if (input !== null) input.focus();
+  }
+  componentDidMount() {
+    window.onpopstate = () => {
+      this.close();
+    };
+  }
   render() {
     const {
       fields: { electricity, roof, place, roofUnit },
@@ -138,7 +159,12 @@ class Calculator extends Component {
         <OpenCalc click={this.saveMyMoney} />
 
         <div className="overlay" ref={overlay => (this.overlay = overlay)}>
-          <button onClick={this.close} className="close">
+          <button
+            onClick={() => {
+              window.history.back();
+            }}
+            className="close"
+          >
             <img alt="close calculator" src={require("./assets/close.svg")} />
           </button>
 

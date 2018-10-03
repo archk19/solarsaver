@@ -360,7 +360,7 @@ table {
   top: 0;
   opacity: 1;
   transition: top 0.3s ease-in;
-  height: 120%;
+  /* height: 120%; */
 }
 
 .wrappersave {
@@ -392,7 +392,7 @@ button.save {
   color: white;
   text-shadow: #600303 1px 1px 1px;
   /* background: #f5a623; */
-  width: 95%;
+  width: calc(100% - 20px);
   font-size: 24px;
   /* justify-content: space-around; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -467,6 +467,7 @@ button.next span {
 .calculator {
   margin: 0 var(--calc-margin);
   color: rgba(0, 0, 0, 0.86);
+  margin-top: 15px;
 }
 
 .calculator label {
@@ -534,7 +535,7 @@ button.next span {
 
 .sqf,
 .sqm {
-  width: 70px;
+  width: 60px;
   padding-top: 4px;
   padding-bottom: 4px;
   white-space: nowrap;

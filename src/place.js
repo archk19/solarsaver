@@ -25,7 +25,7 @@ class Place extends Component {
   };
 
   onBlur = () => {
-    if (this.props.value === "" && this.state.prevValue !== " ") {
+    if (this.props.value === "" && this.state.prevValue !== "") {
       this.props.onInputChange({
         target: {
           name: "place",
@@ -35,16 +35,19 @@ class Place extends Component {
     }
   };
 
+  checkAndChange = event => {
+    const {
+      target: { value }
+    } = event;
+    this.props.onInputChange(event);
+    if (values.find(({ place }) => place === value)) {
+      setTimeout(() => this.input.blur(), 0);
+    }
+  };
+
   render() {
     const placesList = values.map(item => item.place);
-    const {
-      value,
-      onInputChange,
-      onClick,
-      isCollapsed,
-      question,
-      tooltip
-    } = this.props;
+    const { value, onClick, isCollapsed, question, tooltip } = this.props;
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
@@ -56,13 +59,13 @@ class Place extends Component {
             <input
               name="place"
               value={value}
-              onChange={onInputChange}
+              onChange={this.checkAndChange}
               list="places"
               placeholder="e.g Karnataka"
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               onKeyPress={this._handleKeyPress}
-              //autoFocus
+              ref={input => (this.input = input)}
             />
 
             <datalist id="places">
