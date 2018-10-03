@@ -32,7 +32,48 @@ class Results extends Component {
   };
 
   state = {
-    place: this.props.place
+    place: this.props.place,
+    email: ""
+  };
+
+  isValidEmail = () => {
+    const { email } = this.state;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  onEmailChange = event => this.setState({ email: event.target.value });
+
+  onSubmitEmail = async () => {
+    if (this.isValidEmail()) {
+      try {
+        const { electricity, roof, place, roofUnit } = this.props;
+        const roofInSqf =
+          roofUnit === "sqf" ? roof : this.sqmToSqfConverter(roof);
+        await Promise.all([
+          fetch("https://hooks.zapier.com/hooks/catch/3861433/l1x8vp/", {
+            method: "POST",
+            body: JSON.stringify({
+              email: this.state.email,
+              timestamp: new Date().toLocaleString(),
+              electricity,
+              roofInSqf,
+              place
+            })
+          }),
+          window.firebaseDB.collection("leads").add({
+            email: this.state.email,
+            timestamp: new Date().toLocaleString(),
+            electricity,
+            roofInSqf,
+            place
+          })
+        ]);
+        /* Success logic */
+      } catch (_) {
+        /* Ignore error */
+      }
+    }
   };
 
   static getDerivedStateFromProps({ place }) {
@@ -106,8 +147,7 @@ class Results extends Component {
         text: ""
       },
       subtitle: {
-        text:
-          "Swipe over the map to see your annual and cumulative savings by year"
+        text: ""
       },
       series: [
         {
@@ -178,16 +218,19 @@ class Results extends Component {
 
         <div className="resultsCard">
           <header>
-            Lifetime Savings (25 years):{" "}
+            Lifetime Savings (25 years):
+            <br />
             {formatter.format(cumulativeSavingsArray[24])}
           </header>
           <div>
-            Don't spend a single rupee. Start saving from the first month!
+            Don't spend a single rupee.
+            <br />
+            Start saving from the first month!
           </div>
-        </div>
 
-        <div>
-          <HighchartsReact highcharts={Highcharts} options={options} />
+          <div>
+            <HighchartsReact highcharts={Highcharts} options={options} />
+          </div>
         </div>
 
         {/* <div style={{ whiteSpace: "pre" }}>{annualSavingsArray.join("\n")}</div>
@@ -196,12 +239,23 @@ class Results extends Component {
         </div> */}
         <div className="leadCapture">
           Leave your email to get quotes from top solar providers in your area!
-          <input name="email" placeholder="e.g anil@gmail.com" type="email" />
+          <div className="emailwrapper">
+            <input
+              name="email"
+              placeholder="e.g anil@gmail.com"
+              type="email"
+              value={this.state.email}
+              onChange={this.onEmailChange}
+            />
+          </div>
           <button
             className="submit"
-            /* disabled={}
-                onClick={} */
-          />
+            disabled={!this.isValidEmail()}
+            onClick={this.onSubmitEmail}
+          >
+            {" "}
+            Save my Money!
+          </button>
         </div>
       </div>
     );

@@ -88,7 +88,15 @@ class Calculator extends Component {
     if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
     if (screen === SCREENS.PLACE) {
       this.setScreen(SCREENS.NONE)();
-      this.setState({ showResults: true });
+      this.setState({ showResults: true }, () => {
+        const results = document.querySelector(".results");
+        if (results) {
+          this.overlay.scrollTo({
+            top: results.offsetTop - 2,
+            behavior: "smooth"
+          });
+        }
+      });
     }
   };
 
@@ -148,7 +156,7 @@ class Calculator extends Component {
         value: place,
         key: SCREENS.PLACE,
         touched: touched[SCREENS.PLACE],
-        question: "Which State is your house in?",
+        question: "Which state is your house in?",
         tooltip:
           "Your state will help us find the rate you pay for electricity from the grid."
       }
