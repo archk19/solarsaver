@@ -15,7 +15,7 @@ class Tooltip extends Component {
       <div className="question">
         {question}
         <img
-          alt="tool-tip image"
+          alt="tool-tip"
           src={
             isExpanded
               ? require("./assets/close.svg")

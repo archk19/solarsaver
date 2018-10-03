@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import Tooltip from "./tooltip";
 
 class Roof extends Component {
+  _handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.props.goToNext();
+    }
+  };
   changeRoofUnit = value => () => {
     this.props.onInputChange({ target: { name: "roofUnit", value } });
   };
@@ -19,7 +25,9 @@ class Roof extends Component {
       <section className="inputarea" onClick={onClick}>
         <div>
           <label htmlFor="">Step 2 of 3</label>
-          {isCollapsed ? null : <p>{question}</p>}
+          {isCollapsed ? null : (
+            <Tooltip question={question} tooltip={tooltip} />
+          )}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             {isCollapsed ? (
               <span className={`value${value ? "" : " empty"}`}>
@@ -33,6 +41,8 @@ class Roof extends Component {
                 value={value}
                 onChange={onInputChange}
                 maxLength={5}
+                onKeyPress={this._handleKeyPress}
+                autoFocus
               />
             )}
             {isCollapsed ? (

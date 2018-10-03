@@ -4,7 +4,6 @@ import Electricity from "./electricity";
 import Roof from "./roof";
 import Place from "./place";
 import Results from "./results";
-import Tooltip from "./tooltip";
 
 const SCREENS = {
   ELECTRICITY: "electricity",
@@ -130,7 +129,7 @@ class Calculator extends Component {
         touched: touched[SCREENS.PLACE],
         question: "Which State is your house in?",
         tooltip:
-          "Your state will help us with the rate you pay for electricity from the grid. And also the average solar radiation in your State."
+          "Your state will help us find the rate you pay for electricity from the grid."
       }
     ];
 

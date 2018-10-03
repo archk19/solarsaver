@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import values from "./values";
+import Tooltip from "./tooltip";
 
 class Place extends Component {
   state = {
     prevValue: this.props.value
+  };
+
+  _handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.props.goToNext();
+    }
   };
 
   onFocus = () => {
@@ -42,7 +49,9 @@ class Place extends Component {
       <section className="inputarea" onClick={onClick}>
         <div>
           <label htmlFor="">Step 3 of 3</label>
-          {isCollapsed ? null : <p>{question}</p>}
+          {isCollapsed ? null : (
+            <Tooltip question={question} tooltip={tooltip} />
+          )}
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             <input
               name="place"
@@ -52,6 +61,8 @@ class Place extends Component {
               placeholder="e.g Karnataka"
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onKeyPress={this._handleKeyPress}
+              autoFocus
             />
 
             <datalist id="places">

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 const PROPOSITIONS = [
   {
     image: "downpayment",
-    text: "Pay zero down-payment"
+    text: "Only savings, no payments!"
   },
   {
     image: "savings",
@@ -19,7 +19,8 @@ const PROPOSITIONS = [
 class Propositions extends Component {
   render() {
     return (
-      <section className="propositions">
+      <section>
+        <div className="propositions">What you get with Solar Saver:</div>
         {PROPOSITIONS.map(({ text, image }) => (
           <div className="proposition" key={text}>
             <img src={require(`./assets/${image}.svg`)} alt={image} />

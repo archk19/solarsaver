@@ -204,16 +204,24 @@ table {
   font-size: 36px;
 }
 
+.propositions {
+  font-weight: 900;
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .proposition {
+  font-weight: 900;
+  font-size: 17px;
+  text-align: center;
   display: flex;
   flex-direction: row;
   align-items: center;
   /* padding-top: 20px; */
   padding-bottom: 10px;
-  font-weight: 900;
-  font-size: 17px;
-  text-align: center;
   width: 100%;
+
   word-wrap: break-word;
 }
 
@@ -343,7 +351,7 @@ table {
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.95);
-  transition: top 0.5s ease-in, opacity 0.5s ease-in;
+  transition: top 0.3s ease-in, opacity 0.5s ease-in;
   height: 100vh;
   overflow: auto;
 }
@@ -351,40 +359,69 @@ table {
 .overlay.expanded {
   top: 0;
   opacity: 1;
-  transition: top 0.5s ease-in;
+  transition: top 0.3s ease-in;
   height: 120%;
 }
 
-button.save {
+.wrappersave {
+  text-align: center;
   display: flex;
+  vertical-align: middle;
   align-items: center;
-  padding: 15px;
-  color: white;
-  background: #f5a623;
-  width: 100%;
-  font-size: 24px;
-  justify-content: space-around;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: fixed;
-  bottom: 0;
+  height: 100px;
 }
 
-button.save img {
+button.save {
+  padding: 12px 0px;
+  border: 1px solid #a20505;
+  border-radius: 8px;
+  background: #ff0a0a;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ff0a0a),
+    to(#a20505)
+  );
+  background: -moz-linear-gradient(top, #ff0a0a, #a20505);
+  background: linear-gradient(to bottom, #ff0a0a, #a20505);
+  -webkit-box-shadow: #000000 0px 4px 8px 0px;
+  -moz-box-shadow: #000000 0px 4px 8px 0px;
+
+  /* padding: 15px; */
+  color: white;
+  text-shadow: #600303 1px 1px 1px;
+  /* background: #f5a623; */
+  width: 95%;
+  font-size: 24px;
+  /* justify-content: space-around; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  bottom: 10px;
+  /* right: 10px; */
+  left: 10px;
+  /* margin: 10px; */
+}
+
+/* button.save img {
   position: relative;
   height: 38px;
   top: -2px;
   right: -10px;
-}
+} */
 
-button.save span {
-  text-align: left;
-  margin-left: -40px;
-}
+/* /* button.save span {
+  /* text-align: left;
+  /* margin-left: -40px;
+  text-align: center;
+  /* flex-wrap: nowrap;
+  /* width: 100px;
+} */
 
 button.close {
   align-self: flex-start;
-  margin: 25px 0px 5px 5px;
-  width: 30px;
+  margin: 20px 0px 10px 10px;
+  width: 40px;
 }
 
 button.next {
@@ -440,6 +477,8 @@ button.next span {
 
 .question {
   font-size: 24px;
+  flex-wrap: wrap;
+  width: 90%;
 }
 
 .tooltip {
@@ -450,6 +489,7 @@ button.next span {
   transition: all 0.3s ease-in;
   transform: translateY(-70px);
   opacity: 0;
+  width: 90vw;
 }
 
 .tooltip.expanded {
@@ -460,8 +500,8 @@ button.next span {
 }
 
 .question img {
-  height: 18px;
-  margin-left: 10px;
+  height: 20px;
+  margin-left: 5px;
 }
 
 .inputarea .wrapper {

@@ -106,7 +106,7 @@ class Results extends Component {
         type: "spline"
       },
       title: {
-        text: "Here are your Savings!"
+        text: ""
       },
       subtitle: {
         text:
