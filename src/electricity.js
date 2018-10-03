@@ -33,7 +33,7 @@ class Electricity extends Component {
               onChange={onInputChange}
               maxLength={5}
               onKeyPress={this._handleKeyPress}
-              autoFocus
+              //autoFocus
             />
           </div>
         </div>

@@ -62,7 +62,7 @@ class Place extends Component {
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               onKeyPress={this._handleKeyPress}
-              autoFocus
+              //autoFocus
             />
 
             <datalist id="places">

@@ -66,15 +66,12 @@ class Results extends Component {
       item => item / solarHrsPerYear
     );
 
-    const minKwpArray = kwpByConsumptionArray.map(item =>
-      Math.min(item, kwpByRoof)
-    );
+    // const minKwpArray = kwpByConsumptionArray.map(item =>
+    //   Math.min(item, kwpByRoof)
+    // );
 
     const kwpSS =
-      Math.round(
-        (minKwpArray.reduce((sum, item) => sum + item) / minKwpArray.length) *
-          100
-      ) / 100;
+      Math.round(Math.min(kwpByConsumptionArray[0], kwpByRoof) * 100) / 100;
 
     const maxAnnualConsumptionSS = kwpSS * solarHrsPerYear;
 
@@ -94,7 +91,7 @@ class Results extends Component {
           return sumArray;
         }
         sumArray.push(
-          Math.round((item + sumArray[sumArray.length - 1]) / 100) * 100
+          Math.round((item + sumArray[sumArray.length - 1]) / 1000) * 1000
         );
         return sumArray;
       },
@@ -164,13 +161,30 @@ class Results extends Component {
       }
     };
 
+    const formatter = new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    });
+
     return (
-      <div className="result">
+      <div className="results">
         {/* <div>Result</div>
         <div>{electricity}</div>
         <div>{roof}</div>
         <div>{roofUnit}</div>
         <div>{place}</div> */}
+
+        <div className="resultsCard">
+          <header>
+            Lifetime Savings (25 years):{" "}
+            {formatter.format(cumulativeSavingsArray[24])}
+          </header>
+          <div>
+            Don't spend a single rupee. Start saving from the first month!
+          </div>
+        </div>
 
         <div>
           <HighchartsReact highcharts={Highcharts} options={options} />
@@ -180,6 +194,15 @@ class Results extends Component {
         <div style={{ whiteSpace: "pre" }}>
           {cumulativeSavingsArray.join("\n")}
         </div> */}
+        <div className="leadCapture">
+          Leave your email to get quotes from top solar providers in your area!
+          <input name="email" placeholder="e.g anil@gmail.com" type="email" />
+          <button
+            className="submit"
+            /* disabled={}
+                onClick={} */
+          />
+        </div>
       </div>
     );
   }

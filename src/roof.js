@@ -42,7 +42,7 @@ class Roof extends Component {
                 onChange={onInputChange}
                 maxLength={5}
                 onKeyPress={this._handleKeyPress}
-                autoFocus
+                //autoFocus
               />
             )}
             {isCollapsed ? (
