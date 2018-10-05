@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <div className="header">
         <img
-          src={require(`./assets/landingbg.jpg`)}
+          src={require(`./assets/landingbg.webp`)}
           className="landing"
           alt="Landing Background"
         />

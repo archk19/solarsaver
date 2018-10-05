@@ -250,19 +250,19 @@ table {
 }
 
 .testimonial-1 {
-  background-image: url(./assets/bg1.jpg);
+  background-image: url(./assets/bg1.webp);
   background-position-x: 25%;
   /* background-position-y: -20px; */
 }
 
 .testimonial-3 {
-  background-image: url(./assets/bg2.jpg);
+  background-image: url(./assets/bg2.webp);
   background-position-x: 30%;
   background-position-y: -30px;
 }
 
 .testimonial-2 {
-  background-image: url(./assets/bg3.jpg);
+  background-image: url(./assets/bg3.webp);
   /* background-position-x: 5%; */
 }
 

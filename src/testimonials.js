@@ -45,7 +45,7 @@ class Testimonials extends Component {
               <div className={`hashtag hashtag-${index + 1}`}>{hashtag}</div>
               <img
                 className={`img-${index + 1}`}
-                src={require(`./assets/${image}.jpg`)}
+                src={require(`./assets/${image}.webp`)}
                 alt={image}
               />
               <div className="testimonial-text">
