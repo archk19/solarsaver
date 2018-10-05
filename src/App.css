@@ -392,15 +392,17 @@ button.save {
   color: white;
   text-shadow: #600303 1px 1px 1px;
   /* background: #f5a623; */
-  width: calc(100% - 20px);
+  width: calc(100% - 30px);
   font-size: 24px;
+  font-weight: bold;
   /* justify-content: space-around; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: fixed;
-  bottom: 10px;
+  bottom: 15px;
   /* right: 10px; */
-  left: 10px;
+  left: 15px;
   /* margin: 10px; */
+  /* z-index: 1; */
 }
 
 /* button.save img {
