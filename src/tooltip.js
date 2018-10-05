@@ -22,7 +22,7 @@ class Tooltip extends Component {
               : require("./assets/information.svg")
           }
           onClick={this.toggle}
-          width="20px"
+          width="15px"
         />
         <div className={`tooltip${isExpanded ? " expanded" : ""}`}>
           {tooltip}
