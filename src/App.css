@@ -483,7 +483,7 @@ button.next span {
 .question {
   font-size: 24px;
   flex-wrap: wrap;
-  width: 90%;
+  width: 95%;
 }
 
 .tooltip {
@@ -505,8 +505,8 @@ button.next span {
 }
 
 .question img {
-  height: 20px;
-  margin-left: 5px;
+  height: 15px;
+  margin-left: 10px;
 }
 
 .inputarea .wrapper {
