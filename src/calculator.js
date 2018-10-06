@@ -26,7 +26,12 @@ class Calculator extends Component {
       roof: false,
       place: false
     },
-    showResults: false
+    showResults: false,
+    errors: {
+      electricity: "",
+      roof: "",
+      place: ""
+    }
   };
 
   onInputChange = evt => {
@@ -83,21 +88,47 @@ class Calculator extends Component {
   };
 
   goToNext = () => {
-    const { screen } = this.state;
-    if (screen === SCREENS.ELECTRICITY) this.setScreen(SCREENS.ROOF)();
-    if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
-    if (screen === SCREENS.PLACE) {
-      this.setScreen(SCREENS.NONE)();
-      this.setState({ showResults: true }, () => {
-        const results = document.querySelector(".results");
-        if (results) {
-          this.overlay.scrollTo({
-            top: results.offsetTop - 2,
-            behavior: "smooth"
-          });
-        }
-      });
+    const fields = { ...this.state.fields };
+    const errors = this.validate();
+
+    this.setState({ errors });
+
+    if (Object.keys(errors).length) return;
+    else {
+      const { screen } = this.state;
+      if (screen === SCREENS.ELECTRICITY) this.setScreen(SCREENS.ROOF)();
+      if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
+      if (screen === SCREENS.PLACE) {
+        this.setScreen(SCREENS.NONE)();
+        this.setState({ showResults: true }, () => {
+          const results = document.querySelector(".results");
+          if (results) {
+            this.overlay.scrollTo({
+              top: results.offsetTop - 2,
+              behavior: "smooth"
+            });
+          }
+        });
+      }
     }
+  };
+
+  validate = () => {
+    const errors = {};
+
+    if (this.electricity <= 0)
+      errors.electricity = "Please enter a number greater than zero.";
+    if (this.electricity <= 0)
+      errors.roof = "Please enter a number greater than zero.";
+
+    const isValidPlace = values.find(
+      ({ place: original }) => original === this.place
+    );
+
+    if (!isValidPlace)
+      errors.place = "Please select a state from the drop-down.";
+
+    return errors;
   };
 
   isCollapsed = forScreen => {
@@ -116,12 +147,14 @@ class Calculator extends Component {
       this.close();
     };
   }
+
   render() {
     const {
       fields: { electricity, roof, place, roofUnit },
       touched,
       screen,
-      showResults
+      showResults,
+      errors
     } = this.state;
 
     let progress = 33;
@@ -178,7 +211,7 @@ class Calculator extends Component {
 
           <div className="calculator">
             {INPUTS.map(
-              ({ Component, value, key, touched, question, tooltip }) =>
+              ({ Component, value, key, touched, question, tooltip, errors }) =>
                 touched ? (
                   <Component
                     value={value}
