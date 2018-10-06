@@ -147,7 +147,7 @@ class Calculator extends Component {
         value: roof,
         key: SCREENS.ROOF,
         touched: touched[SCREENS.ROOF],
-        question: "What's your roof-top area?",
+        question: "What's your rooftop area?",
         tooltip:
           "We'll assume 80% usable area to account for shaded areas. This will help us know your maximum capacity."
       },
@@ -199,11 +199,22 @@ class Calculator extends Component {
                 disabled={this.isNextDisabled()}
                 onClick={this.goToNext}
               >
-                <div className="progress" style={{ width: `${progress}%` }} />
                 {progress === 100 ? (
-                  <span> Save my Money!</span>
+                  <div>
+                    <div
+                      className="progress100"
+                      style={{ width: `${progress}%` }}
+                    />
+                    <span> Save my Money!</span>
+                  </div>
                 ) : (
-                  <span>Next</span>
+                  <div>
+                    <div
+                      className="progress"
+                      style={{ width: `${progress}%` }}
+                    />
+                    <span>Next</span>
+                  </div>
                 )}
               </button>
             )}

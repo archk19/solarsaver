@@ -33,12 +33,13 @@ class Results extends Component {
 
   state = {
     place: this.props.place,
-    email: ""
+    email: "",
+    isSuccess: false
   };
 
   isValidEmail = () => {
     const { email } = this.state;
-    const re = /^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
 
@@ -70,9 +71,13 @@ class Results extends Component {
           })
         ]);
         /* Success logic */
+        this.setState({
+          isSuccess: true
+        });
       } catch (_) {
         /* Ignore error */
       }
+    } else {
     }
   };
 
@@ -142,6 +147,10 @@ class Results extends Component {
     const options = {
       chart: {
         type: "spline"
+        // borderColor: "#EBBA95",
+        // borderWidth: 2,
+        // borderRadius: 20
+        // // margin: [100, 100, 100, 100]
       },
       title: {
         text: ""
@@ -194,6 +203,12 @@ class Results extends Component {
           "Year 25"
         ]
       },
+
+      yAxis: {
+        labels: {
+          format: "₹ {value}"
+        }
+      },
       tooltip: {
         shared: true,
         followPointer: true,
@@ -223,9 +238,9 @@ class Results extends Component {
             {formatter.format(cumulativeSavingsArray[24])}
           </header>
           <div>
-            Don't spend a single rupee.
+            Don't spend a single rupee. EVER.
             <br />
-            Start saving from the first month!
+            Save from the first month! Save for 25 years :)
           </div>
 
           <div>
@@ -237,26 +252,34 @@ class Results extends Component {
         <div style={{ whiteSpace: "pre" }}>
           {cumulativeSavingsArray.join("\n")}
         </div> */}
-        <div className="leadCapture">
-          Leave your email to get quotes from top solar providers in your area!
-          <div className="emailwrapper">
-            <input
-              name="email"
-              placeholder="e.g anil@gmail.com"
-              type="email"
-              value={this.state.email}
-              onChange={this.onEmailChange}
-            />
+        {this.isSuccess ? (
+          <div className="leadCapture">
+            Thank you for your interest! We'll get back to you as soon as we
+            can.
           </div>
-          <button
-            className="submit"
-            disabled={!this.isValidEmail()}
-            onClick={this.onSubmitEmail}
-          >
-            {" "}
-            Save my Money!
-          </button>
-        </div>
+        ) : (
+          <div className="leadCapture">
+            Leave your email to get quotes from top solar providers in your
+            area!
+            <div className="emailwrapper">
+              <input
+                name="email"
+                placeholder="e.g anil@gmail.com"
+                type="email"
+                value={this.state.email}
+                onChange={this.onEmailChange}
+              />
+            </div>
+            <button
+              className="submit"
+              disabled={!this.isValidEmail()}
+              onClick={this.onSubmitEmail}
+            >
+              {" "}
+              Save my Money!
+            </button>
+          </div>
+        )}
       </div>
     );
   }
