@@ -654,4 +654,11 @@ input::placeholder {
 
 .desktop {
   flex: 1;
+  background-image: url(./assets/desktopbg.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: calc(100% - 520px);
+  height: 100%;
+  position: fixed;
+  right: 0;
 }
