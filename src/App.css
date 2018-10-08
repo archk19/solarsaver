@@ -599,7 +599,7 @@ input::placeholder {
 
 @keyframes slide {
   from {
-    transform: translateX(-2000px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   to {
