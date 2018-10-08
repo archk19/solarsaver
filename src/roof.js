@@ -18,7 +18,9 @@ class Roof extends Component {
       roofUnit,
       isCollapsed,
       question,
-      tooltip
+      tooltip,
+      errors,
+      onInputBlur
     } = this.props;
     const isSqm = roofUnit === "sqm";
     return (
@@ -31,7 +33,7 @@ class Roof extends Component {
           <div className={`wrapper${isCollapsed ? " collapsed" : ""}`}>
             {isCollapsed ? (
               <span className={`value${value ? "" : " empty"}`}>
-                {value || "1,000"}
+                {value || "e.g 1,000"}
               </span>
             ) : (
               <input
@@ -42,11 +44,13 @@ class Roof extends Component {
                 onChange={onInputChange}
                 maxLength={5}
                 onKeyPress={this._handleKeyPress}
-                //autoFocus
+                onBlur={onInputBlur}
               />
             )}
             {isCollapsed ? (
-              <span>{isSqm ? "Sq. m" : "Sq. ft"}</span>
+              <span className={`value${value ? "" : " empty"}`}>
+                {isSqm ? "Sq. m" : "Sq. ft"}
+              </span>
             ) : (
               <div className="toggle">
                 <div
@@ -65,6 +69,7 @@ class Roof extends Component {
             )}
           </div>
         </div>
+        <div className="error">{errors.roof}</div>
       </section>
     );
   }

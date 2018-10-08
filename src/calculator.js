@@ -89,46 +89,45 @@ class Calculator extends Component {
 
   goToNext = () => {
     const fields = { ...this.state.fields };
-    const errors = this.validate();
-
-    this.setState({ errors });
-
-    if (Object.keys(errors).length) return;
-    else {
-      const { screen } = this.state;
-      if (screen === SCREENS.ELECTRICITY) this.setScreen(SCREENS.ROOF)();
-      if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
-      if (screen === SCREENS.PLACE) {
-        this.setScreen(SCREENS.NONE)();
-        this.setState({ showResults: true }, () => {
-          const results = document.querySelector(".results");
-          if (results) {
-            this.overlay.scrollTo({
-              top: results.offsetTop - 2,
-              behavior: "smooth"
-            });
-          }
-        });
-      }
+    const valid = this.validate();
+    const { screen } = this.state;
+    if (screen === SCREENS.ELECTRICITY) this.setScreen(SCREENS.ROOF)();
+    if (screen === SCREENS.ROOF) this.setScreen(SCREENS.PLACE)();
+    if (screen === SCREENS.PLACE && valid) {
+      this.setScreen(SCREENS.NONE)();
+      this.setState({ showResults: true }, () => {
+        const results = document.querySelector(".results");
+        if (results) {
+          this.overlay.scrollTo({
+            top: results.offsetTop - 2,
+            behavior: "smooth"
+          });
+        }
+      });
     }
+  };
+
+  onInputBlur = () => {
+    this.validate();
   };
 
   validate = () => {
     const errors = {};
-
-    if (this.electricity <= 0)
+    const {
+      fields: { electricity, roof, place },
+      touched
+    } = this.state;
+    if (touched[SCREENS.ELECTRICITY] && !electricity)
       errors.electricity = "Please enter a number greater than zero.";
-    if (this.electricity <= 0)
+    if (touched[SCREENS.ROOF] && !roof)
       errors.roof = "Please enter a number greater than zero.";
-
     const isValidPlace = values.find(
-      ({ place: original }) => original === this.place
+      ({ place: original }) => original === place
     );
-
-    if (!isValidPlace)
+    if (touched[SCREENS.PLACE] && !isValidPlace)
       errors.place = "Please select a state from the drop-down.";
-
-    return errors;
+    this.setState({ errors });
+    return Object.values(errors).every(v => v === "");
   };
 
   isCollapsed = forScreen => {
@@ -211,7 +210,7 @@ class Calculator extends Component {
 
           <div className="calculator">
             {INPUTS.map(
-              ({ Component, value, key, touched, question, tooltip, errors }) =>
+              ({ Component, value, key, touched, question, tooltip }) =>
                 touched ? (
                   <Component
                     value={value}
@@ -223,6 +222,8 @@ class Calculator extends Component {
                     question={question}
                     tooltip={tooltip}
                     goToNext={this.goToNext}
+                    errors={errors}
+                    onInputBlur={this.onInputBlur}
                   />
                 ) : null
             )}

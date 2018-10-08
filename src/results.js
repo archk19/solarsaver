@@ -71,6 +71,7 @@ class Results extends Component {
           })
         ]);
         /* Success logic */
+
         this.setState({
           isSuccess: true
         });
@@ -252,8 +253,8 @@ class Results extends Component {
         <div style={{ whiteSpace: "pre" }}>
           {cumulativeSavingsArray.join("\n")}
         </div> */}
-        {this.isSuccess ? (
-          <div className="leadCapture">
+        {this.state.isSuccess ? (
+          <div className="leadCapture success">
             Thank you for your interest! We'll get back to you as soon as we
             can.
           </div>

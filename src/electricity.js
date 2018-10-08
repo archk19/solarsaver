@@ -15,7 +15,8 @@ class Electricity extends Component {
       isCollapsed,
       question,
       tooltip,
-      errors
+      errors,
+      onInputBlur
     } = this.props;
     return (
       <section className="inputarea" onClick={onClick}>
@@ -34,11 +35,11 @@ class Electricity extends Component {
               onChange={onInputChange}
               maxLength={5}
               onKeyPress={this._handleKeyPress}
-              //autoFocus
+              onBlur={onInputBlur}
             />
-            <div className="error">{errors.electricity}</div>
           </div>
         </div>
+        <div className="error">{errors.electricity}</div>
       </section>
     );
   }

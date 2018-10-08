@@ -32,6 +32,8 @@ class Place extends Component {
           value: this.state.prevValue
         }
       });
+    } else {
+      this.props.onInputBlur();
     }
   };
 
@@ -47,7 +49,14 @@ class Place extends Component {
 
   render() {
     const placesList = values.map(item => item.place);
-    const { value, onClick, isCollapsed, question, tooltip } = this.props;
+    const {
+      value,
+      onClick,
+      isCollapsed,
+      question,
+      tooltip,
+      errors
+    } = this.props;
     return (
       <section className="inputarea" onClick={onClick}>
         <div>
@@ -75,6 +84,7 @@ class Place extends Component {
             </datalist>
           </div>
         </div>
+        <div className="error">{errors.place}</div>
       </section>
     );
   }

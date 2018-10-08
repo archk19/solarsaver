@@ -118,6 +118,7 @@ input {
 
 span.empty {
   color: #757575;
+  height: auto;
 }
 
 :root {
@@ -376,6 +377,7 @@ button.save {
   border: 1px solid #a20505;
   border-radius: 5px;
   background: #ff0a0a;
+  max-width: 490px;
   background: -webkit-gradient(
     linear,
     left top,
@@ -594,6 +596,22 @@ input::placeholder {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+@keyframes slide {
+  from {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+.leadCapture.success {
+  opacity: 0;
+  animation: slide 1s ease-in-out 0s;
+  animation-fill-mode: forwards;
+}
+
 .resultsCard header {
   font-size: 24px;
   font-weight: bolder;
@@ -621,4 +639,18 @@ input::placeholder {
 .error {
   color: #ff0a0a;
   font-size: 75%;
+  position: relative;
+  top: -12px;
+}
+
+.app {
+  display: flex;
+}
+
+.mobile {
+  max-width: 520px;
+}
+
+.desktop {
+  flex: 1;
 }
