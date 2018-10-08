@@ -118,14 +118,14 @@ class Calculator extends Component {
       touched
     } = this.state;
     if (touched[SCREENS.ELECTRICITY] && !electricity)
-      errors.electricity = "Please enter a number greater than zero.";
+      errors.electricity = "Please enter a number greater than zero";
     if (touched[SCREENS.ROOF] && !roof)
-      errors.roof = "Please enter a number greater than zero.";
+      errors.roof = "Please enter a number greater than zero";
     const isValidPlace = values.find(
       ({ place: original }) => original === place
     );
     if (touched[SCREENS.PLACE] && !isValidPlace)
-      errors.place = "Please select a state from the drop-down.";
+      errors.place = "Please select a state from the drop-down";
     this.setState({ errors });
     return Object.values(errors).every(v => v === "");
   };

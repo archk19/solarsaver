@@ -255,8 +255,8 @@ class Results extends Component {
         </div> */}
         {this.state.isSuccess ? (
           <div className="leadCapture success">
-            Thank you for your interest! We'll get back to you as soon as we
-            can.
+            Thank you for your interest!
+            <br /> We'll get back to you as soon as we can.
           </div>
         ) : (
           <div className="leadCapture">
