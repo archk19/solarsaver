@@ -343,6 +343,7 @@ table {
 }
 
 .overlay {
+  max-width: 520px;
   display: flex;
   opacity: 0;
   flex-direction: column;
@@ -574,7 +575,7 @@ input::placeholder {
 
 .results {
   margin: 0 calc(var(--calc-margin) * -1);
-  width: 100vw;
+  width: 100%;
   /* background: #e2e1e0; */
   text-align: center;
 }
